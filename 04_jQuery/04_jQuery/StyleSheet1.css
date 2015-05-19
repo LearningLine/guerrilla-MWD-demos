@@ -1,0 +1,37 @@
+﻿li{
+    cursor:pointer;
+}
+
+.female{
+    font-style:italic;
+}
+
+.selected {
+    background-color:lime;
+}
+
+/*.female {
+    color:#f0f8ff;
+}
+#brock{
+    color:pink;
+}*/
+
+/*
+.female{
+    font-style:italic;
+}
+
+li {
+    color: lime;
+}
+
+li {
+    color: red;
+}
+
+#brock{
+    font-weight:bold;
+    color:gray;
+}
+*/
