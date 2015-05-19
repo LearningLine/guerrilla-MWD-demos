@@ -1,0 +1,51 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <style>
+        [ng-cloak]{
+            display:none;
+        }
+    </style>
+</head>
+<body ng-app="app">
+
+    <div ng-controller="PersonCtrl"
+         title="{{model.name}} is {{model.age}} years old"
+    >
+        <select ng-model="model.state" 
+                ng-options="s.id as s.name for s in states">
+        </select>
+
+        <div ng-cloak>Name: {{ model.name }}</div>
+        <div ng-show="showName(model)">Name: <input ng-model="model.name"></div>
+        <div>Age: <span ng-bind="model.age"></span></div>
+        <div>Age: <input ng-model="model.age"></input></div>
+        <ul>
+            <li ng-repeat="item in model.children">
+                {{$index+1}}
+                {{$first}}
+                {{$middle}}
+                {{$last}}
+                {{$parent.model.name}}
+                <input ng-model="item.name">
+                <span ng-bind="item.name"></span>
+            </li>
+        </ul>
+        <div>
+            <button ng-click="update(model)"
+                    ng-disabled="!canSave(model)"
+            >
+                Save Changes
+            </button>
+        </div>
+        <!--<div ng-controller="ChildCtrl">
+            <div>Child: <span ng-bind="model.name"></span></div>
+            <div>Name: <input ng-model="model.name"></div>
+        </div>-->
+    </div>
+
+    <script src="angular.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
