@@ -1,0 +1,7 @@
+ES6/ES2015 - Finalized in June 2015
+TypeScript - ES6++ (superset of JS)
+
+Transpilation
+
+ES6 -> ES5/ES3
+TypeScript -> ES5/ES3
