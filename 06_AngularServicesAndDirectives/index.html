@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AngularJS Services and Directives</title>
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/swanky-purse/jquery-ui.css">
+</head>
+<body ng-app="myApp">
+    <div ng-controller="myController">
+        {{ message }}
+
+        <button my-one-click-button>Click Me!</button>
+
+        <my-n-click-button max-clicks="2">Click Me Twice</my-n-click-button>
+
+        <hr>
+
+        <input type="text" my-date-picker ng-model="model.selectedDate">
+
+        <p>You selected {{ model.selectedDate | date }}!</p>
+
+        <hr>
+
+        <input type="password" ng-model="model.password">
+        <span my-password-strength="model.password"
+              my-notify-bad-password="badPassword()"
+        ></span>
+
+        <hr>
+
+        <form name="myForm">
+            <input type="text" name="username" ng-model="model.username" required>
+            <span ng-if="myForm.username.$invalid && myForm.username.$dirty">Type a username!!!</span>
+            <input type="submit" ng-disabled="myForm.$invalid" value="Submit">
+        </form>
+    </div>
+
+    <script src="http://code.jquery.com/jquery-2.1.4.js"></script>
+    <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
+    <script src="app.js"></script>
+    <script src="services.js"></script>
+    <script src="directives.js"></script>
+</body>
+</html>
