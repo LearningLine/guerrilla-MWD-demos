@@ -1,0 +1,22 @@
+﻿
+@{
+    ViewBag.Title = "Login";
+}
+
+<h2>Login</h2>
+@using(Html.BeginForm("Login", "Home"))
+{
+    @Html.AntiForgeryToken()
+    
+    <div>
+        @Html.Label("username")
+        @Html.TextBox("username")
+    </div>
+    <div>
+        <button>Login</button>
+    </div>
+}
+
+<div>
+    <a href="~/Home/Google">Sign in with Google</a>
+</div>
