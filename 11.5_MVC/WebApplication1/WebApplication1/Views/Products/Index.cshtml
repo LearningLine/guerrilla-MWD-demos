@@ -1,0 +1,43 @@
+﻿@using WebApplication1.Models
+@model ProductIndexViewModel
+
+@{
+    //Layout = null;
+}
+
+<h1>Hello Northwind!</h1>
+<h2>You found @Model.Count products</h2>
+@if(Model.Filter != null)
+{
+    <h3>You are searching for products with @Model.Filter in the name</h3>
+}
+<ul>
+    @foreach (var product in Model.Products)
+    {
+        <li>
+            @Html.ActionLink(product.ProductName + "(" + product.UnitPrice + ")", "Edit", new { id=product.ProductId })
+            @*<a href="/Product/Edit/@product.ProductId">
+                @product.ProductName (@product.UnitPrice)
+            </a>*@
+        </li>
+    }
+</ul>
+
+
+
+
+
+
+
+    @*<h2>@DateTime.Now</h2>
+    @if (DateTime.Now.Hour > 12)
+    {
+        <h3>why are you still at work?</h3>
+    }
+    <ol>
+        @for (var i = 0; i < 5; i++)
+        {
+            <li>wow @(i + 1)</li>
+        }
+    </ol>*@
+

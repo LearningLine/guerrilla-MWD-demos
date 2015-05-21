@@ -1,0 +1,22 @@
+﻿@model WebApplication1.Ef.Product
+
+<h1>this is edit!</h1>
+<h2>you are editing product ID @Model.ProductId</h2>
+
+@using (Html.BeginForm("Update", "Products"))
+{
+    @Html.Hidden("ProductId")
+    
+    <div>
+        @Html.Label("ProductName")
+        @Html.TextBox("ProductName")
+    </div>
+    <div>
+        @Html.Label("UnitPrice")
+        @Html.TextBox("UnitPrice")
+    </div>
+    <div>
+        <button>Save Changes</button>
+    </div>
+}
+
