@@ -1,0 +1,27 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Home</h2>
+@if(User.Identity.IsAuthenticated)
+{
+    <h2>Logged in as @User.Identity.Name</h2>
+    <div>
+        <a href="~/Home/Logout">Logout</a>
+    </div>
+    <dl>
+        @foreach (var claim in ((System.Security.Claims.ClaimsPrincipal)User).Claims)
+        {
+            <dt>@claim.Type</dt>
+            <dd>@claim.Value</dd>
+        }
+    </dl>
+}
+else
+{
+    <h2>Not logged in</h2>
+    <div>
+        <a href="~/Home/Login">Login</a>
+    </div>
+}

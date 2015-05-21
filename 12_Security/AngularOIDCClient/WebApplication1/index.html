@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <style>
+        #info pre{
+            vertical-align:top;
+            display:inline-block;
+            width:400px;
+        }
+    </style>
+</head>
+<body>
+    <button id="get">Get Token</button>
+    <div id="info">
+        <pre id="profile"></pre>
+        <pre id="token"></pre>
+    </div>
+    <script src="bower_components/oidc-token-manager/dist/oidc-token-manager.js"></script>
+    <script>
+        var settings = {
+            authority: "https://localhost:44333/core",
+            client_id: "implicitclient",
+            redirect_uri: "https://localhost:44344/",
+            response_type: "id_token token",
+            scope:"openid profile email roles read"
+        };
+        var mgr = new OidcTokenManager(settings);
+
+        document.getElementById('get').addEventListener("click", function () {
+            mgr.redirectForToken();
+        }, false);
+
+        function showProfile() {
+            //console.log(mgr.profile);
+            document.getElementById('profile').innerText = JSON.stringify(
+                mgr.profile,
+                null, 2);
+            document.getElementById('token').innerText = JSON.stringify({
+                access_token: mgr.access_token,
+                scopes: mgr.scopes,
+                expires_in:mgr.expires_in
+            }, null, 2);
+        }
+
+        if (location.hash) {
+            mgr.processTokenCallbackAsync().then(function () {
+                showProfile();
+                location.hash = "";
+            });
+        }
+
+        showProfile();  
+
+
+    </script>
+</body>
+</html>
