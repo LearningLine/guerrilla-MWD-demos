@@ -1,0 +1,24 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <ul></ul>
+
+    <script src="Scripts/jquery-1.6.4.js"></script>
+    <script src="Scripts/jquery.signalR-2.2.0.js"></script>
+    <script src="signalr/hubs"></script>
+    <script>
+        var proxy = $.signalR.OilWell;
+
+        proxy.client.drillingStarted = function (name) {
+            $("<li>").text(name).prependTo("ul");
+        }
+
+        $.signalR.hub.start().then(function () {
+            $("<li>").text('connected').prependTo("ul");
+        });
+    </script>
+</body>
+</html>

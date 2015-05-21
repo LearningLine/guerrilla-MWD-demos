@@ -1,0 +1,22 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    Oil Well Name: <input><button>Start</button>
+
+    <script src="Scripts/jquery-1.6.4.js"></script>
+    <script src="Scripts/jquery.signalR-2.2.0.js"></script>
+    <script src="signalr/hubs"></script>
+    <script>
+        var proxy = $.signalR.OilWell;
+
+        $.signalR.hub.start().then(function () {
+            $("button").click(function () {
+                proxy.server.startDrilling($("input").val());
+            });
+        });
+    </script>
+</body>
+</html>
