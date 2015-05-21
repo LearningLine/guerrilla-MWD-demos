@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Service Workers</title>
+</head>
+<body>
+
+    <script>
+
+        navigator.serviceWorker.register('/sw.js')
+            .then(function() {
+                console.log('registered');
+            })
+            .catch(function(err) {
+                console.log(err);
+            })
+        ;
+
+    </script>
+
+</body>
+</html>
