@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Title</title>
+    <link rel="stylesheet" href="lib/c3.css">
+</head>
+<body>
+
+    <div id="chart"></div>
+
+    <script src="lib/d3.js" charset="utf-8"></script>
+    <script src="lib/c3.js"></script>
+
+    <script>
+
+        function getData(start, n) {
+            var last = start;
+            return d3.range(n).map(function() {
+                return last += d3.random.normal()();
+            });
+        }
+
+        var data = getData(50, 100);
+
+        var chart = c3.generate({
+            bindto: '#chart',
+            data: {
+                columns: [
+                    [ 'My Data' ].concat(data)
+                    // [ 'My Other Data' ].concat(getData(50, 100))
+                ]
+            }
+        });
+
+        setInterval(function() {
+            data = data.slice(1);
+            data.push(getData(data.slice(-1)[0], 1)[0]);
+
+            chart.load({
+                columns: [
+                    [ 'My Data' ].concat(data)
+                ]
+            });
+        }, 1000);
+
+    </script>
+
+
+</body>
+</html>

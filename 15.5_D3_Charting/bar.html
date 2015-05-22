@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Bar Chart</title>
+    <style>
+
+        .axis line, .axis path {
+            fill: none;
+            stroke: black;
+        }
+
+    </style>
+</head>
+<body>
+    <script src="lib/d3.js" charset="utf-8"></script>
+    <script>
+
+        function getData(n) {
+            return d3.range(n).map(function() {
+                return Math.floor(Math.random() * 100);
+            });
+        }
+
+        renderBarChart(getData(10));
+
+        function renderBarChart(data) {
+            var margin = {
+                top: 20,
+                right: 20,
+                bottom: 20,
+                left: 30
+            };
+
+            var chartWidth = 640;
+            var chartHeight = 480;
+
+            var chart = d3.select('body')
+                .append('svg')
+                .attr({
+                    width: margin.left + chartWidth + margin.right,
+                    height: margin.top + chartHeight + margin.bottom
+                })
+                .append('g')
+                .attr('transform', 'translate(' + margin.left + ',' + margin.right + ')')
+            ;
+
+            var xScale = d3.scale.linear()
+                .domain([ 0, d3.max(data) ])
+                .range([ 0, chartWidth ])
+                .nice()
+            ;
+
+            var yScale = d3.scale.ordinal()
+                .domain(d3.range(data.length))
+                .rangeBands([ 0, chartHeight ], 0.2)
+            ;
+
+            var bars = chart.selectAll('rect')
+                .data(data);
+
+            // update existing elements
+            // bars...
+
+            // update new elements
+            bars.enter().append('rect');
+
+            // update old elements
+            bars.exit().remove();
+
+            var colors = d3.scale.category10();
+
+            // update all remaining elements
+            bars.attr({
+                x: 0,
+                y: function(d, i) {
+                    return yScale(i);
+                },
+                width: 0,
+                height: yScale.rangeBand(),
+                fill: function(d, i) {
+                    return colors(i);
+                }
+            }).on('mouseover', function() {
+                // this.setAttribute('fill', 'yellow')
+            });
+
+            bars.transition()
+                .attr('width', function(d) {
+                    return xScale(d);
+                })
+                .ease('elastic')
+            ;
+
+            var xAxis = d3.svg.axis()
+                .scale(xScale)
+                .orient('bottom')
+            ;
+
+            chart.append('g')
+                .attr('class', 'axis')
+                .attr('transform', 'translate(0, ' + chartHeight + ')')
+                .call(xAxis)
+            ;
+
+            var yAxis = d3.svg.axis()
+                .scale(yScale)
+                .orient('left')
+            ;
+
+            chart.append('g')
+                .attr('class', 'axis')
+                .call(yAxis)
+            ;
+
+            // chart.append('text').text('hello').attr('transform', 'translate(100, ' + chartHeight + ')');
+        }
+
+    </script>
+</body>
+
+
+
+
+
+
+
+
+
+
+</html>

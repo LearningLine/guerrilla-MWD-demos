@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>D3</title>
+</head>
+<body>
+    <p>SVG - Scalable Vector Graphics</p>
+
+    <!-- Raster-based, immediate mode API -->
+    <!-- <canvas>
+    </canvas> -->
+
+    <!-- Vector-based, retained mode API -->
+    <svg width="640" height="480">
+        <rect x="10" y="10" width="100%" height="20" fill="red"></rect>
+        <g>
+            <circle cx="100" cy="100" r="50" fill="green"></circle>
+            <path d="M50,150 L55,100 L45,125" stroke="black" fill="none"></path>
+        </g>
+    </svg>
+
+
+    <div id="container">
+        <p></p>
+        <p></p>
+        <p></p>
+        <p></p>
+    </div>
+
+    <script src="lib/d3.js" charset="utf-8"></script>
+
+    <script>
+
+        var data = [
+            Math.floor(Math.random() * 400),
+            Math.floor(Math.random() * 400),
+            Math.floor(Math.random() * 400),
+            Math.floor(Math.random() * 400)
+        ];
+
+        d3.select('#container').selectAll('p').data(data)
+            .style('background-color', 'blue')
+            .style('color', 'white')
+            .style('width', function(datum, i) {
+                return datum + 'px';
+            })
+            .text(function(datum) {
+                return datum;
+            });
+
+    </script>
+
+</body>
+
+
+
+
+
+
+
+
+
+
+
+</html>
