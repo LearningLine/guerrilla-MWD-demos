@@ -1,0 +1,12 @@
+.foo .bar {
+  color: red;
+}
+.foo .baz {
+  color: #ff3333;
+}
+.quux .bar {
+  color: red;
+}
+.quux .baz {
+  color: #ff3333;
+}

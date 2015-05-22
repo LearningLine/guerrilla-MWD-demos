@@ -1,0 +1,15 @@
+@color: red;
+
+.foo {
+    .bar {
+        color: @color;
+    }
+
+    .baz {
+        color: lighten(@color, 10%);
+    }
+}
+
+.quux {
+    .foo();
+}
