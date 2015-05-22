@@ -1,0 +1,11 @@
+﻿@model WebApplication1.SomeModel
+
+<h1>Hello MVC6 (data is: @Model)</h1>
+
+<form asp-action="Save" asp-controller="Home" method="post">
+    <div>
+        <label asp-for="Name" class="foo">Name</label>
+        <input asp-for="Name" />
+    </div>
+    <button>Save</button>
+</form>

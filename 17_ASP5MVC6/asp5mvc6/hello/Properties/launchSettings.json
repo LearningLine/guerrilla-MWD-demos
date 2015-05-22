@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "foo": {
+      "commandName": "foo",
+      "commandLineArgs": "dfkjhfdjkhfdkl"
+    }
+  }
+}
