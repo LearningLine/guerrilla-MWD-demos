@@ -1,0 +1,20 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+	<meta charset="utf-8" />
+</head>
+<body ng-app="app">
+
+    <div ng-controller="MovieCtrl">
+        <div>Name: <span ng-bind="name | uppercase"></span></div>
+        <div>Name: <input ng-model="name"></div>
+        <div>Director: <span ng-bind="getDirectorName(director)"></span></div>
+        <div>Director: <span ng-bind="director | directorName"></span></div>
+    </div>
+
+    <script src="angular.js"></script>
+    <script src="app.js"></script>
+    <script src="DirectorsMod.js"></script>
+</body>
+</html>
