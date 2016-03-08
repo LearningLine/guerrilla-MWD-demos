@@ -1,0 +1,61 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+	<meta charset="utf-8" />
+    <style>
+        [ng-cloak]{
+            display:none;
+        }
+    </style>
+</head>
+<body ng-app="app">
+
+    <div ng-controller="PersonCtrl">
+        <div title="{{ person.name }} is {{person.age}} years old">
+            Name: <span ng-cloak>{{ person.name }}</span>
+        </div>
+        <div>Age: <span ng-bind="person.age"></span></div>
+        <div>
+            Name: <input ng-model="person.name" />
+        </div>
+        <div>
+            Age: <input ng-model="person.age" />
+        </div>
+        <div>
+            EULA: <input type="checkbox" 
+                         ng-true-value="'yes'" 
+                         ng-false-value="'no'" 
+                         ng-model="eula" />
+        </div>
+        <ul>
+            <li ng-repeat="kid in person.children">
+                first: {{$first}},
+                middle: {{$middle}},
+                last: {{$last}},
+                {{ $index + 1 }}
+               <span ng-bind="kid.name"></span>
+                is the child of {{person.name}}
+            </li>
+        </ul>
+        <div>
+            <button ng-click="getOlder(person)">Get Older</button>
+            <button ng-disabled="!isValid(person, eula)"
+                    ng-click="update(person)">Update</button>
+        </div>
+    </div>
+
+    <!--<div ng-controller="Person2Ctrl">
+        <div>{{name}} is {{age}}</div>
+    </div>
+
+    <div ng-controller="Person2Ctrl">
+        <div>{{name}} is {{age}}</div>
+    </div>-->
+
+
+
+    <script src="angular.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
