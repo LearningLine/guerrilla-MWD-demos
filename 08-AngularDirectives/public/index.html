@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AngularJS Directives</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body ng-app="myApp" ng-controller="myController">
+
+    <button ng-click="newData()">New Data</button>
+    <my-line-chart chart-data="myData" my-click="myClick()"></my-line-chart>
+
+    <hr>
+
+    <input type="text" ng-model="toggleLinkText">
+    <span>{{ toggleLinkText }}</span>
+
+    <my-toggle-panel toggle-text="toggleLinkText">
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi aut, accusamus delectus sit magni sequi maiores explicabo doloribus sapiente et libero voluptate molestias consectetur autem nostrum at, consequatur suscipit, doloremque.
+    </my-toggle-panel>
+
+    <!-- <script src="jquery.js"></script> -->
+    <script src="angular.js"></script>
+    <script src="Chart.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
