@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Angular &amp; Ajax Demo</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body ng-app="myApp" ng-controller="myController">
+    <h1>Angular &amp; Ajax</h1>
+
+    <p>{{ message }}</p>
+
+    <p>
+        <button ng-click="downloadPeople()">Download People</button>
+        <button ng-click="submitPerson()">Submit Person</button>
+    </p>
+
+    <ul>
+        <li ng-repeat="person in people">{{ person.first_name }} {{ person.last_name }}</li>
+    </ul>
+
+    <p>You rendered this page at <%= renderTime %>!</p>
+
+    <script src="angular.min.js"></script>
+    <script src="angular-resource.min.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
