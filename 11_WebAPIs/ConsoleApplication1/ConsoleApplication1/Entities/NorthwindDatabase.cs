@@ -1,0 +1,19 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Data.Entity;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApplication1.Entities
+{
+    public class NorthwindDatabase : DbContext
+    {
+        public NorthwindDatabase()
+            : base("name=nw")
+        {
+        }
+
+        public DbSet<ProductEntity> Products { get; set; }
+    }
+}

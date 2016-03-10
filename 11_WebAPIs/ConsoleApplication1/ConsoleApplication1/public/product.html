@@ -1,0 +1,13 @@
+﻿<h1>Product {{product.id}}</h1>
+<div ng-show="message" ng-bind="message"></div>
+<div ng-show="errors.length">
+    Errors:
+    <ul>
+        <li ng-repeat="e in errors" ng-bind="e"></li>
+    </ul>
+</div>
+<div>
+    <div>Name: <input ng-model="product.name" /></div>
+    <div>Price: <input ng-model="product.price" /></div>
+    <div><button ng-click="update(product)">Update</button></div>
+</div>
