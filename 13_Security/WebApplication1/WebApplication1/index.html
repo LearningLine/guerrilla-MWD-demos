@@ -1,0 +1,54 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+	<meta charset="utf-8" />
+</head>
+<body>
+    <div>
+        <button id="login">Login</button>
+        <button id="api">Call API</button>
+    </div>
+    <script src="node_modules/oidc-token-manager/dist/oidc-token-manager.js"></script>
+
+    <script>
+        var settings = {
+            authority: "https://localhost:44333/core",
+            client_id: "spa",
+            redirect_uri: "http://localhost:2436/index.html",
+            response_type: "id_token token",
+            scope: "openid slb api1"
+        };
+        var mgr = new OidcTokenManager(settings);
+
+        document.getElementById("login").addEventListener("click", doLogin, false);
+        document.getElementById("api").addEventListener("click", callApi, false);
+
+        function doLogin() {
+            mgr.redirectForToken();
+        }
+
+        if (window.location.hash) {
+            mgr.processTokenCallbackAsync().then(function () {
+                console.log("profile", mgr.profile);
+                console.log("token", mgr.access_token);
+                window.location = "index.html";
+            });
+        } else {
+            console.log("profile", mgr.profile);
+            console.log("token", mgr.access_token);
+        }
+
+        function callApi() {
+            var xhr = new XMLHttpRequest();
+            xhr.open("GET", "http://localhost:25159/api/test", true);
+            xhr.onload = function () {
+                var json = xhr.responseText;
+                console.log("API response", xhr.status, json);
+            }
+            xhr.setRequestHeader("Authorization", "Bearer " + mgr.access_token);
+            xhr.send();
+        }
+    </script>
+</body>
+</html>

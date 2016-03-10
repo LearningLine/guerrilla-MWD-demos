@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Security.Claims;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 
@@ -24,6 +26,28 @@ namespace MvcAppSecurity.Controllers
 
         public ActionResult Login()
         {
+            return View();
+        }
+
+        public async Task<ActionResult> CallApi()
+        {
+            var user = (ClaimsPrincipal)User;
+            var access_token = user.FindFirst("access_token")?.Value;
+
+            var url = "http://localhost:25159/api/test";
+
+            var client = new HttpClient();
+            client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", access_token);
+            var response = await client.GetAsync(url);
+            if (response.IsSuccessStatusCode)
+            {
+                ViewData["result"] = await response.Content.ReadAsStringAsync();
+            }
+            else
+            {
+                ViewData["result"] = "status code: " + response.StatusCode;
+            }
+
             return View();
         }
 
