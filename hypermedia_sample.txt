@@ -1,0 +1,48 @@
+GET ~/api/products/1
+
+OPTIONS ~/api/products/1
+Metadata:true
+
+{
+  ...
+}
+
+GET http://server/api
+{
+  links:{
+    products:{
+      url:"http://server/api/products"
+    },
+    productMetadata:{
+      url:"http://server/api/productMetadata"
+    },
+    orders:{
+      url:"http://server/api/products"
+    }
+  }
+}
+
+{
+  data:{
+    price:{
+      amount:123.45,
+      currency:"USD"
+    },
+    orderNumber:123,
+    orderDate:54322,
+    customerId:345
+  },
+  links:{
+    metadata: {
+      url:"http://...."
+    },
+    details:{
+      url : "http://....."
+    }
+  }
+}
+
+var entity = ....;
+if (entity.links.details){
+  // show details links
+}
