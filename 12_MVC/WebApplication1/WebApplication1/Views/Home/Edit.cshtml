@@ -1,0 +1,13 @@
+﻿@model ConsoleApplication1.Entities.ProductEntity
+
+<h1>Edit Product @Model.ProductId</h1>
+
+<form method="post" action="~/Home/Update/@Model.ProductId">
+    <div>
+        Name: <input name="name" value="@Model.ProductName" />
+    </div>
+    <div>
+        Price: <input name="price" value="@Model.UnitPrice" />
+    </div>
+    <div><button>Update</button></div>
+</form>

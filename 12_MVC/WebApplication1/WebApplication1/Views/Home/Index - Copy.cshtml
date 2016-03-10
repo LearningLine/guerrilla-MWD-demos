@@ -1,0 +1,30 @@
+﻿@model ConsoleApplication1.Entities.ProductEntity[]
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <h1>Hello MVC!</h1>
+
+    @*<h1>@ViewData["products"].GetType()</h1>*@
+
+    <h2>The time is: @DateTime.Now</h2>
+    @if (DateTime.Now.Hour > 12)
+    {
+        int x = 5;
+
+        <h2>Good evening @x!</h2>
+    }
+    <h3>other content</h3>
+
+    <script>
+        for(var i = 0; i < @DateTime.Now.Hour; i++){
+            console.log('wat?');
+        }
+    </script>
+</body>
+</html>

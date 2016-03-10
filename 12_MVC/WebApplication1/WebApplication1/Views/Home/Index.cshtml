@@ -1,0 +1,11 @@
+﻿@model ConsoleApplication1.Entities.ProductEntity[]
+
+<h1>Products</h1>
+<ul>
+    @foreach (var product in Model)
+    {
+        <li>
+            <a href="~/Home/Edit/@product.ProductId">@product.ProductName</a>
+        </li>
+    }
+</ul>
