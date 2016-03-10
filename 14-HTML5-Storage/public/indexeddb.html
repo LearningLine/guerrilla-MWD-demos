@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HTML5 Storage</title>
+</head>
+<body ng-app="myApp" ng-controller="myController">
+    <label for="">Username:</label>
+    <input type="text" ng-model="user.name">
+    <br>
+    <label for="">First name:</label>
+    <input type="text" ng-model="user.first">
+    <br>
+    <label for="">Last name:</label>
+    <input type="text" ng-model="user.last">
+    <br>
+    <button ng-click="submit(user)">Submit</button>
+    <button ng-click="query()">Query</button>
+
+    <hr>
+
+    <ul>
+        <li ng-repeat="user in users">{{ user.id }}: {{ user.firstName }}</li>
+    </ul>
+
+    <script src="angular.js"></script>
+    <script src="indexeddb.js"></script>
+</body>
+</html>

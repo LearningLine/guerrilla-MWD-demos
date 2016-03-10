@@ -1,0 +1,16 @@
+{
+  "name": "14-HTML5-Storage",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Jason Diamond <jason@diamond.name>",
+  "license": "ISC",
+  "dependencies": {
+    "angular": "^1.5.0",
+    "express": "^4.13.4"
+  }
+}
