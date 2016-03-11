@@ -1,0 +1,8 @@
+{
+  "name": "19-ES6-Babel-TypeScript",
+  "version": false,
+  "dependencies": {},
+  "ambientDependencies": {
+    "angular": "registry:dt/angular#1.5.0+20160310153852"
+  }
+}
