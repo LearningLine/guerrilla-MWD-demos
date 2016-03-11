@@ -1,0 +1,18 @@
+CACHE MANIFEST
+
+# v1
+
+CACHE:
+
+index.html
+app.js
+
+NETWORK:
+
+/api/ping
+/api/download/config
+
+FALLBACK:
+
+# /api offline.json
+# / fallback.html
